@@ -1,7 +1,6 @@
 from sklearn.discriminant_analysis import (
     LinearDiscriminantAnalysis,
 )
-
 from tabular.dataset import TabularDataType
 from utils.tabular.preprocessing.preprocessing_base import PrepBase
 from typing import List, Dict, Callable

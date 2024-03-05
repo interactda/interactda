@@ -4,7 +4,7 @@ from tabular.dataset import TabularDataType, TabularDataset
 from utils.tabular.preprocessing.preprocessing_base import PrepBase
 from sklearn.linear_model import LinearRegression
 from utils.tabular.preprocessing.validation_base import ArgsBase
-from pydantic import Field, field_validator
+from pydantic import Field
 import numpy as np
 from typing import List, Dict, Callable
 

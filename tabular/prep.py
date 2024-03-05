@@ -1,5 +1,4 @@
 import itertools
-from pprint import pprint
 import random
 import pandas as pd
 from typing import List, Dict, Tuple
@@ -199,63 +198,3 @@ class Preprocessing:
     def _validate_tuning_cfg(tuning_cfg: List[Dict | List[Dict]]) -> bool:
         validated = True
         return validated
-
-
-if __name__ == "__main__":
-    df = pd.read_csv("../playgrounds/housing-prices-dataset_train.csv")
-    dtypes = TabularDataset(df).dtypes
-    num_cols = [
-        col for col in df.columns if dtypes[col] == TabularDataType.NUMBER.value
-    ]
-    prep = Preprocessing()
-    step0 = {
-        "action": "dimension_reduction",
-        "targeted_cols": "number",
-        "method": "feature_selection",
-        "strategy": "variance_threshold",
-        "args": {"threshold": {"options": [0.1, 0.2, 0.3]}},
-    }
-
-    step1 = [
-        {
-            "action": "feature_engineering",
-            "targeted_cols": "category",
-            "exclude": ["MSZoning"],
-            "method": "encoding",
-            "strategy": "kfold_target_encoder",
-            "args": {"target": "SalePrice"},
-        },
-        {
-            "action": "missing_values",
-            "targeted_cols": "category",
-            "method": "simple_imputer",
-            "strategy": "constant",
-            "args": {"fill_value": {"options": ["missing", "unknown"]}},
-        },
-    ]
-    # step1_5 = {
-    #     "action": "feature_engineering",
-    #     "targeted_cols": ["MSZoning"],
-    #     "method": "encoding",
-    #     "strategy": "label_encoder",
-    #     "args": {},
-    # }
-    # step2 = {
-    #     "action": "dimension_reduction",
-    #     "targeted_cols": "all",
-    #     "method": "discriminant_analysis",
-    #     "strategy": "lda",
-    #     "args": {
-    #         "target": "SalePrice",
-    #         "n_components": 10,
-    #         # "beta_loss": "frobenius",
-    #     },
-    # }
-    pipelines = prep.get_tuning_pipelines(
-        [step0, step1], n_pipelines=6, random_state=40
-    )
-    pprint(pipelines)
-    # prep.setup_pipeline([step0])
-    # prep.fit(df)
-    # transformed_df = prep.transform([df])
-    # print(transformed_df[0])

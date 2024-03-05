@@ -1,27 +1,4 @@
-from sklearn.base import TransformerMixin, BaseEstimator
-
 from utils.tabular.preprocessing.preprocessing_base import PrepBase
-
-
-# class GroupLeastFrequent(TransformerMixin, BaseEstimator):
-#     def fit(self):
-#         pass
-#
-#
-class DAGroupLeastFrequent(TransformerMixin, BaseEstimator):
-    def __init__(self, **kwargs):
-        self.args
-        self.least_frequent = None
-
-    def fit(self, X, y=None):
-        self.least_frequent = (
-            X.value_counts().tail(len(X.unique()) - self.n_keep).index.tolist()
-        )
-        return self
-
-    def transform(self, X):
-        X = X.apply(lambda x: "Other" if x in self.least_frequent else x)
-        return X
 
 
 class PrepFeatureEngineeringGrouping(PrepBase):

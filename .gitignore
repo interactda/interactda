@@ -9,3 +9,5 @@ cache/
 __pycache__/
 .idea/*
 *xml
+dist/
+build/
