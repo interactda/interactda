@@ -8,3 +8,4 @@ test_task_info.json
 cache/
 __pycache__/
 .idea/*
+*xml
