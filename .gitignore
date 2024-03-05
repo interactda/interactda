@@ -1,0 +1,9 @@
+playgrounds/
+tests/
+*.pyc
+*.csv
+.idea/
+*.bin
+test_task_info.json
+cache/
+__pycache__/
