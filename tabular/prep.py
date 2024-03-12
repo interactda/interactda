@@ -34,7 +34,6 @@ from utils.tabular.preprocessing.sampling.under_sampling import (
 )
 from utils.tabular.preprocessing.validation_base import PrepStepValidationBase
 
-
 PREP_METHOD_MAPPING = {
     "feature_engineering": {
         "scaling": PrepFeatureEngineeringScaling,

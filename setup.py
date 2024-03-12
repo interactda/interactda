@@ -1,7 +1,5 @@
 from setuptools import setup, find_packages
 
-from setuptools import setup, find_packages
-
 setup(
     name="interactda",
     version="0.0.1",
@@ -13,6 +11,5 @@ setup(
         "imbalanced-learn == 0.12.0",
         "category-encoders == 2.6.3",
         "numpy == 1.26.4",
-        # List your dependencies here
     ],
 )
